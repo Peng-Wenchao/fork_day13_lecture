@@ -70,6 +70,7 @@ public class EmployeeController {
         return "employeeupdate";
     } 
 
+    @PostMapping("/updateEmp")
     public String updEmployeeProcess(@ModelAttribute("employee") Employee emp, BindingResult result, Model model) {
         
         if (result.hasErrors()) {
