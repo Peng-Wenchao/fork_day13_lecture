@@ -17,6 +17,8 @@ import java.util.*;
 import sg.edu.nus.iss.day13_lecture.repository.EmployeeRepo;
 import sg.edu.nus.iss.day13_lecture.model.Employee;
 
+import java.io.FileNotFoundException;
+
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
@@ -40,7 +42,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String addEmployee(@Valid @ModelAttribute("employee") Employee employeeForm, BindingResult result, Model model) {
+    public String addEmployee(@Valid @ModelAttribute("employee") Employee employeeForm, BindingResult result, Model model) throws FileNotFoundException {
 
         if (result.hasErrors()) {
             return "employeeadd";

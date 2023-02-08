@@ -2,6 +2,11 @@ package sg.edu.nus.iss.day13_lecture.repository;
 
 import org.springframework.stereotype.Repository;
 
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -12,6 +17,9 @@ import sg.edu.nus.iss.day13_lecture.model.*;
 @Repository
 public class EmployeeRepo {
     
+    final String dirPath = "/Users/Darryl/data";
+    final String filename = "employee.txt";
+
     private List<Employee> employees;
 
     public EmployeeRepo() throws ParseException {
@@ -35,9 +43,16 @@ public class EmployeeRepo {
         return employees;
     }
 
-    public Boolean save(Employee employee) {
-
+    public Boolean save(Employee employee) throws FileNotFoundException{
         Boolean result = employees.add(employee);
+
+        File f = new File(dirPath + "/" + filename);
+        OutputStream os = new FileOutputStream(f, true);
+        PrintWriter pw = new PrintWriter(os);
+        pw.println(employee.toString());
+        pw.flush();
+        pw.close();
+
         return result;
     }
 
@@ -67,10 +82,18 @@ public class EmployeeRepo {
         int employeeIndex = employees.indexOf(emp);
 
         if (employeeIndex >= 0) {
-            employees.remove(employeeIndex);
+            // employees.remove(employeeIndex);
+
+            employees.get(employeeIndex).setAddress(em.getAddress());
+            employees.get(employeeIndex).setBirthDay(em.getBirthDay());
+            employees.get(employeeIndex).setFirstName(em.getFirstName());
+            employees.get(employeeIndex).setLastName(em.getLastName());
+            employees.get(employeeIndex).setSalary(em.getSalary());
+            employees.get(employeeIndex).setPhoneNo(em.getPhoneNo());
+            employees.get(employeeIndex).setPostalCode(em.getPostalCode());
         }
 
-        employees.add(em);
+        // employees.add(em);
 
         return true;
     }
