@@ -19,11 +19,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Employee {
     
     @NotEmpty(message = "First Name is a mandatory field")
-    @Size(min=30, max=100, message="First Name must be between 30 to 100 characters")
+    @Size(min=3, max=100, message="First Name must be between 3 to 100 characters")
     private String firstName;
 
     @NotEmpty(message = "Last Name is a mandatory field")
-    @Size(min=30, max=100, message="Last Name must be between 30 to 100 characters")
+    @Size(min=3, max=100, message="Last Name must be between 3 to 100 characters")
     private String lastName;
 
     @Email(message = "Invalid Email format")
