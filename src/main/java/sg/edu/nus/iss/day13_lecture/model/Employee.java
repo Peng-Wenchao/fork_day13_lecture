@@ -46,6 +46,8 @@ public class Employee {
     private String address;
 
     @Digits(fraction=0, integer=6, message="Postal code format, i.e. 123456")
+    @Min(value = 111111, message="Starts from 111111")
+    @Max(value = 999999, message="Ends with 999999")
     private Integer postalCode;
 
     

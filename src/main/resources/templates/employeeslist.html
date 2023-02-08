@@ -19,7 +19,7 @@
     <br /><br />
 
     <div class="container">
-      <a th:href="@{/addnew}" class="btn btn-primary">Add New Employee</a>
+      <a th:href="@{/employees/addnew}" class="btn btn-primary">Add New Employee</a>
       <br><br>
       <table class="table table-striped">
         <thead>
@@ -47,7 +47,7 @@
             <td data-th-text="${emp.postalCode}"></td>
             <td>
               <a th:href="@{#}">Update</a>
-              <a th:href="@{#}">Delete</a>
+              <a th:href="@{/employees/deleteEmployee/{email}(email=${emp.email})}">Delete</a>
             </td>
           </tr>
         </tbody>

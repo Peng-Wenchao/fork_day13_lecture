@@ -2,6 +2,8 @@ package sg.edu.nus.iss.day13_lecture.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +18,7 @@ import sg.edu.nus.iss.day13_lecture.repository.EmployeeRepo;
 import sg.edu.nus.iss.day13_lecture.model.Employee;
 
 @Controller
-// @RequestMapping("/employees")
+@RequestMapping("/employees")
 public class EmployeeController {
     
     @Autowired
@@ -47,7 +49,17 @@ public class EmployeeController {
         Boolean bResult = false;
         bResult = empRepo.save(employeeForm);
 
-        return "redirect:/home";
+        return "redirect:/employees/home";
+    }
+
+    @GetMapping("/deleteEmployee/{email}")
+    public String delEmployee(@PathVariable("email") String email) {
+
+        Employee emp = empRepo.findByEmailId(email);
+
+        Boolean bResult = empRepo.delete(emp);
+
+        return "redirect:/employees/home";
     }
 
 }
