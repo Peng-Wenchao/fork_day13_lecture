@@ -46,7 +46,7 @@
             <td data-th-text="${emp.address}"></td>
             <td data-th-text="${emp.postalCode}"></td>
             <td>
-              <a th:href="@{#}">Update</a>
+              <a th:href="@{/employees/updateEmployee/{email}(email=${emp.email})}">Update</a>
               <a th:href="@{/employees/deleteEmployee/{email}(email=${emp.email})}">Delete</a>
             </td>
           </tr>

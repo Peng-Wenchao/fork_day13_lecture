@@ -62,4 +62,22 @@ public class EmployeeController {
         return "redirect:/employees/home";
     }
 
+    @GetMapping("/updateEmployee/{email}")
+    public String updEmployee(@PathVariable("email") String email, Model model) {
+        Employee emp = empRepo.findByEmailId(email);
+        model.addAttribute("employee", emp);
+
+        return "employeeupdate";
+    } 
+
+    public String updEmployeeProcess(@ModelAttribute("employee") Employee emp, BindingResult result, Model model) {
+        
+        if (result.hasErrors()) {
+            return "employeeupdate";
+        }
+
+        empRepo.updateEmployee(emp);
+        return "redirect:/employees/home";
+    }
+
 }
