@@ -1,4 +1,13 @@
 {
-    "name": "Peng Wenchao",
-    "student id": "e1221843"
+    "p1":
+    {
+        "name": "Peng Wenchao",
+        "student id": "e1221843"
+    },
+
+    "p2":
+    {
+        "name": "Peng Wenyan",
+        "student id": "e1221845"
+    }
 }
